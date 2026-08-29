@@ -31,7 +31,7 @@
         <h1>We build systems that find <span>people</span>, bring in <span>leads</span>, and close more <span>deals</span>.</h1>
         <p>From recruitment to automation, we help build the infrastructure your business needs to grow efficiently and profitably.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#contact">▣ Book a Discovery Call</a>
+          <div class="calendar-booking" id="calendar-booking-hero"></div>
           <a class="btn btn-outline" href="#services">See Our Services →</a>
         </div>
       </div>
@@ -104,7 +104,7 @@
         <div class="eyebrow purple">READY TO GROW?</div>
         <h2>Let's build a system that works for your business.</h2>
         <p>Book a free discovery call and let's talk about how we can help you scale.</p>
-        <a class="btn btn-primary" href="mailto:hello@arniesystems.com?subject=Discovery%20Call">▣ Book Your Free Call</a>
+        <div class="calendar-booking" id="calendar-booking-contact"></div>
         <small>◉ No commitment. Just a conversation.</small>
       </div>
       <div class="contact-card">
@@ -123,5 +123,29 @@
   </footer>
 
   <script src="script.js"></script>
+  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+  <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+  <script>
+    (function() {
+      window.addEventListener('load', function() {
+        var bookingUrl = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ33BDnmwfMRrqTNqgFcHG_HivuReYq0lvcvXvNI0znvvMcdRo8yBjAHHG5_ezUr1mxnie1qAjd3?gv=true';
+
+        function loadBooking(targetId) {
+          var target = document.getElementById(targetId);
+          if (!target || !window.calendar || !calendar.schedulingButton) return;
+
+          calendar.schedulingButton.load({
+            url: bookingUrl,
+            color: '#039BE5',
+            label: 'Book an appointment',
+            target: target
+          });
+        }
+
+        loadBooking('calendar-booking-hero');
+        loadBooking('calendar-booking-contact');
+      });
+    })();
+  </script>
 </body>
 </html>
